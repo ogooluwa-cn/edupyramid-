@@ -1,101 +1,144 @@
-import Image from "next/image";
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
+import { FaCalendarAlt, FaCertificate, FaTag } from 'react-icons/fa';
+import { FaTwitter, FaInstagram, FaEnvelope } from 'react-icons/fa';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <>
+      <Head>
+        <title>Learning Management System</title>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+      </Head>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <header className="sticky top-0 z-50 bg-white shadow transition-all duration-300 animate__animated animate__fadeInDown">
+        <div className="flex justify-between items-center py-6 px-10">
+          <div className="text-xl font-bold text-blue-800 animate__animated animate__fadeInLeft">
+            EduSkill
+          </div>
+          <nav className="flex gap-6 items-center animate__animated animate__fadeInRight">
+            <a href="#" className="hover:text-blue-800 transition">Home</a>
+            <Link 
+            href='/course' className="hover:text-blue-800 transition"
+            >
+              Courses
+              </Link>
+            <a href="#" className="hover:text-blue-800 transition">About</a>
+            <a href="#" className="hover:text-blue-800 transition">Contact</a>
+            <Link
+              href="/login"
+              className="bg-blue-800 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+            >
+              Sign in
+            </Link>
+          </nav>
         </div>
+      </header>
+
+      <main className="text-center py-24 px-5 bg-gradient-to-b from-blue-50 to-white animate__animated animate__fadeIn">
+        <h2 className="text-lg text-gray-600 animate__animated animate__fadeInUp animate__delay-1s">Empowering Education for All</h2>
+        <h1 className="text-4xl md:text-5xl font-bold text-blue-900 my-4 leading-tight animate__animated animate__fadeInUp animate__delay-2s">
+          Learn New Skills & Advance Your Career Today
+        </h1>
+        <p className="text-gray-600 mb-6 max-w-xl mx-auto animate__animated animate__fadeInUp animate__delay-3s">
+          Discover a wide range of online courses curated by top professionals. Whether you're looking to boost your career or learn something new, we've got you covered with flexible and accessible learning options.
+        </p>
+        <button className="bg-blue-800 hover:bg-blue-700 text-white px-6 py-3 rounded transition duration-300 shadow-lg animate__animated animate__zoomIn animate__delay-4s"><Link href="/course">
+          Get Started
+          </Link>
+        </button>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      <section className="bg-blue-100 py-16 px-5 text-center animate__animated animate__fadeInUp">
+        <h3 className="text-sm text-amber-800 font-semibold mb-2">WHY CHOOSE US</h3>
+        <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-4">Empower Your Learning Journey</h2>
+        <div className="max-w-4xl mx-auto text-gray-700 text-lg space-y-4">
+          <p>Our platform offers expertly designed courses tailored to industry needs and real-world skills.</p>
+          <p>Track your learning path with progress tracking, certifications, and feedback mechanisms.</p>
+          <p>Connect with mentors and learners from around the globe and grow within a vibrant learning community.</p>
+        </div>
+      </section>
+      
+      {/* Features Section */}
+      <section className="py-16 px-4">
+        <h3 className="text-center text-sm text-orange-600 font-semibold">FEATURES</h3>
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="bg-blue-50 p-6 rounded shadow-sm text-center">
+            <FaCertificate className="text-3xl text-blue-700 mx-auto mb-4" />
+            <h4 className="font-semibold">Certification</h4>
+            <p className="text-sm mt-2 text-gray-600">Receive industry recognized credentials.</p>
+          </div>
+          <div className="bg-blue-50 p-6 rounded shadow-sm text-center">
+            <FaCalendarAlt className="text-3xl text-blue-700 mx-auto mb-4" />
+            <h4 className="font-semibold">Flexible Learning</h4>
+            <p className="text-sm mt-2 text-gray-600">Learn at your own pace, anytime, anywhere.</p>
+          </div>
+          <div className="bg-blue-50 p-6 rounded shadow-sm text-center">
+            <FaTag className="text-3xl text-blue-700 mx-auto mb-4" />
+            <h4 className="font-semibold">Affordable</h4>
+            <p className="text-sm mt-2 text-gray-600">Access high quality content at competitive prices.</p>
+          </div>
+        </div>
+      </section>
+
+
+      <section className="py-16 px-5 bg-white">
+        <h3 className="text-sm text-amber-800 font-semibold text-center mb-10">OUR PROGRAMS</h3>
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {["Web Development", "Data Science", "UI/UX Design", "Digital Marketing", "Cloud Computing", "Business Management"].map((program, idx) => (
+            <div key={idx} className="p-6 bg-blue-50 rounded shadow hover:shadow-xl transition-transform duration-300 transform hover:scale-105 animate__animated animate__fadeInUp">
+              <h4 className="text-lg font-bold text-blue-900 mb-2">{program}</h4>
+              <p className="text-gray-600">Master in-demand skills and earn credentials with comprehensive {program} training, tailored to match current industry standards.</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-gradient-to-br from-blue-50 to-white py-20 px-5 text-center animate__animated animate__fadeInUp">
+        <h3 className="text-sm text-amber-800 font-semibold mb-2">JOIN US</h3>
+        <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Start Your Learning Adventure Today</h2>
+        <p className="max-w-2xl mx-auto text-gray-700 mb-6">
+          Take the first step towards achieving your goals. Join thousands of students and professionals who are transforming their lives through knowledge and skills.
+        </p>
+        <button className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-lg shadow-lg transition-all duration-300">
+          Explore Courses
+        </button>
+      </section>
+
+      <footer className="bg-blue-900 text-white py-12 px-5 animate__animated animate__fadeInUp">
+        <div className="flex flex-col md:flex-row justify-between max-w-6xl mx-auto">
+          <div>
+            <h3 className="font-bold text-lg mb-2">EduSkill</h3>
+            <p className="text-sm text-blue-200 max-w-sm">
+              EduSkill is dedicated to providing accessible, high-quality education for learners of all levels. Our platform is designed to bridge the gap between ambition and achievement.
+            </p>
+          </div>
+          <div>
+            <h4 className="font-semibold mb-2">Quick Links</h4>
+            <ul className="text-sm space-y-1">
+              <li><a href="#" className="hover:underline">Home</a></li>
+              <li><a href="#" className="hover:underline">Courses</a></li>
+              <li><a href="#" className="hover:underline">About Us</a></li>
+              <li><a href="#" className="hover:underline">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-semibold mb-2">Follow Us</h4>
+            <div className="flex gap-4">
+              <a href="#"><Image src="/twitter.png" alt="Twitter" width={24} height={24} /></a>
+              <a href="#"><Image src="/instargram.jpg" alt="Instagram" width={24} height={24} /></a>
+              <a href="#"><Image src="/icons/facebook.jpg" alt="Facebook" width={24} height={24} /></a>
+            </div>
+          </div>
+        </div>
+        <p className="text-center mt-8 text-blue-100 text-sm">
+          © 2024 EduSkill - Learning Management System. All rights reserved.
+        </p>
       </footer>
-    </div>
+    </>
   );
 }
