@@ -18,7 +18,13 @@ export default function Home() {
       <header className="sticky top-0 z-50 bg-white shadow transition-all duration-300 animate__animated animate__fadeInDown">
         <div className="flex justify-between items-center ">
           <div className="text-xl font-bold text-blue-800 animate__animated animate__fadeInLeft flex">
-           <img className=" w-26 h-20" src="/logo2.jpg" alt="User 1" />
+           <Image
+            className="w-26 h-20"
+            src="/logo2.jpg"
+            alt="User 1"
+            width={104}  // 26 * 4 (Tailwind default scale is 4px)
+            height={80}  // 20 * 4
+          />
          </div>
 
           
