@@ -17,7 +17,14 @@ export default function PaystackCheckout() {
   const [form, setForm] = useState({ name: '', email: '' });
   const [loading, setLoading] = useState(true);
 
-  [router];
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (!user) {
+      router.push('/login'); // redirect if not logged in
+    } else {
+      setLoading(false); // allow page to render
+    }
+  }, [router]);
 
   const priceInDollars = 99;
   const priceInKobo = priceInDollars * 100 * 100;

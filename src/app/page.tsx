@@ -2,13 +2,13 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaCalendarAlt, FaCertificate, FaTag } from 'react-icons/fa';
-import { FaTwitter, FaInstagram, FaEnvelope } from 'react-icons/fa';
+
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Learning Management System</title>
+        <title>EduPyramid</title>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -16,10 +16,13 @@ export default function Home() {
       </Head>
 
       <header className="sticky top-0 z-50 bg-white shadow transition-all duration-300 animate__animated animate__fadeInDown">
-        <div className="flex justify-between items-center py-6 px-10">
-          <div className="text-xl font-bold text-blue-800 animate__animated animate__fadeInLeft">
-            EduSkill
-          </div>
+        <div className="flex justify-between items-center ">
+          <div className="text-xl font-bold text-blue-800 animate__animated animate__fadeInLeft flex">
+           <img className=" w-26 h-20" src="/logo2.jpg" alt="User 1" />
+         </div>
+
+          
+         
           <nav className="flex gap-6 items-center animate__animated animate__fadeInRight">
             <a href="#" className="hover:text-blue-800 transition">Home</a>
             <Link 
@@ -53,50 +56,61 @@ export default function Home() {
         </button>
       </main>
 
-      <section className="bg-blue-100 py-16 px-5 text-center animate__animated animate__fadeInUp">
-        <h3 className="text-sm text-amber-800 font-semibold mb-2">WHY CHOOSE US</h3>
-        <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-4">Empower Your Learning Journey</h2>
-        <div className="max-w-4xl mx-auto text-gray-700 text-lg space-y-4">
-          <p>Our platform offers expertly designed courses tailored to industry needs and real-world skills.</p>
-          <p>Track your learning path with progress tracking, certifications, and feedback mechanisms.</p>
-          <p>Connect with mentors and learners from around the globe and grow within a vibrant learning community.</p>
-        </div>
-      </section>
-      
-      {/* Features Section */}
-      <section className="py-16 px-4">
-        <h3 className="text-center text-sm text-orange-600 font-semibold">FEATURES</h3>
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <div className="bg-blue-50 p-6 rounded shadow-sm text-center">
-            <FaCertificate className="text-3xl text-blue-700 mx-auto mb-4" />
-            <h4 className="font-semibold">Certification</h4>
-            <p className="text-sm mt-2 text-gray-600">Receive industry recognized credentials.</p>
+        <section className="bg-blue-100 py-16 px-5 text-center animate__animated animate__fadeInUp">
+          <h3 className="text-sm text-amber-800 font-semibold mb-2">WHY CHOOSE US</h3>
+          <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-4">Empower Your Learning Journey</h2>
+          <div className="max-w-4xl mx-auto text-gray-700 text-lg space-y-4">
+            <p>Our platform offers expertly designed courses tailored to industry needs and real-world skills.</p>
+            <p>Track your learning path with progress tracking, certifications, and feedback mechanisms.</p>
+            <p>Connect with mentors and learners from around the globe and grow within a vibrant learning community.</p>
           </div>
-          <div className="bg-blue-50 p-6 rounded shadow-sm text-center">
-            <FaCalendarAlt className="text-3xl text-blue-700 mx-auto mb-4" />
-            <h4 className="font-semibold">Flexible Learning</h4>
-            <p className="text-sm mt-2 text-gray-600">Learn at your own pace, anytime, anywhere.</p>
-          </div>
-          <div className="bg-blue-50 p-6 rounded shadow-sm text-center">
-            <FaTag className="text-3xl text-blue-700 mx-auto mb-4" />
-            <h4 className="font-semibold">Affordable</h4>
-            <p className="text-sm mt-2 text-gray-600">Access high quality content at competitive prices.</p>
-          </div>
-        </div>
-      </section>
-
-
-      <section className="py-16 px-5 bg-white">
-        <h3 className="text-sm text-amber-800 font-semibold text-center mb-10">OUR PROGRAMS</h3>
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {["Web Development", "Data Science", "UI/UX Design", "Digital Marketing", "Cloud Computing", "Business Management"].map((program, idx) => (
-            <div key={idx} className="p-6 bg-blue-50 rounded shadow hover:shadow-xl transition-transform duration-300 transform hover:scale-105 animate__animated animate__fadeInUp">
-              <h4 className="text-lg font-bold text-blue-900 mb-2">{program}</h4>
-              <p className="text-gray-600">Master in-demand skills and earn credentials with comprehensive {program} training, tailored to match current industry standards.</p>
+        </section>
+        
+        {/* Features Section */}
+        <section className="py-16 px-4">
+          <h3 className="text-center text-sm text-orange-600 font-semibold">FEATURES</h3>
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div className="bg-blue-50 p-6 rounded shadow-sm text-center">
+              <FaCertificate className="text-3xl text-blue-700 mx-auto mb-4" />
+              <h4 className="font-semibold">Certification</h4>
+              <p className="text-sm mt-2 text-gray-600">Receive industry recognized credentials.</p>
             </div>
-          ))}
-        </div>
-      </section>
+            <div className="bg-blue-50 p-6 rounded shadow-sm text-center">
+              <FaCalendarAlt className="text-3xl text-blue-700 mx-auto mb-4" />
+              <h4 className="font-semibold">Flexible Learning</h4>
+              <p className="text-sm mt-2 text-gray-600">Learn at your own pace, anytime, anywhere.</p>
+            </div>
+            <div className="bg-blue-50 p-6 rounded shadow-sm text-center">
+              <FaTag className="text-3xl text-blue-700 mx-auto mb-4" />
+              <h4 className="font-semibold">Affordable</h4>
+              <p className="text-sm mt-2 text-gray-600">Access high quality content at competitive prices.</p>
+            </div>
+          </div>
+        </section>
+
+
+
+      <section className="py-16 px-4">
+          <h3 className="text-center text-sm text-orange-600 font-semibold">What Our Student Say</h3>
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div className="bg-blue-50 p-6 rounded shadow-sm text-center">
+              
+             
+              <p className="text-sm mt-2 text-gray-600">The courses are engaging and impactful</p>
+            </div>
+            <div className="bg-blue-50 p-6 rounded shadow-sm text-center">
+              
+              <p className="text-sm mt-2 text-gray-600">I glanced valuable skill that boosted my career </p>
+            </div>
+            <div className="bg-blue-50 p-6 rounded shadow-sm text-center">
+              
+              
+              <p className="text-sm mt-2 text-gray-600">Excellent platform with expert instructor.</p>
+            </div>
+          </div>
+        </section>
+
+     
 
       <section className="bg-gradient-to-br from-blue-50 to-white py-20 px-5 text-center animate__animated animate__fadeInUp">
         <h3 className="text-sm text-amber-800 font-semibold mb-2">JOIN US</h3>
