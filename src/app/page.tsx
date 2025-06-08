@@ -1,4 +1,9 @@
+'use client';
+
+import { useSearchParams } from 'next/navigation';
+
 import Head from 'next/head';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaFacebook } from "react-icons/fa";
