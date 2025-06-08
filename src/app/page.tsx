@@ -1,12 +1,12 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-
+import {useState} from 'react';
 import Head from 'next/head';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import {useState} from 'react';
+
 import { FaFacebook } from "react-icons/fa";
 
 import { FaCalendarAlt, FaCertificate, FaTag } from 'react-icons/fa';
