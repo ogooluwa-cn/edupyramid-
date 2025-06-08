@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-
+import Link from 'next/link';
 declare global {
   interface Window {
     PaystackPop?: any;
@@ -10,7 +10,7 @@ declare global {
 }
 
 export default function PaystackCheckout() {
-  const router = useRouter();
+  const router = useRouter ();
   const searchParams = useSearchParams();
   const selectedCourse = searchParams.get('course') || 'Course';
 
@@ -57,6 +57,9 @@ export default function PaystackCheckout() {
     <div className="min-h-screen bg-gray-50 py-10 px-4">
       <div className="max-w-4xl mx-auto bg-white p-8 rounded shadow-md">
         <h1 className="text-2xl font-bold text-center mb-8 text-blue-700">Checkout</h1>
+         <Link href="/" className="text-blue-600 hover:underline">
+          &larr; Back to Home
+        </Link>
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-blue-50 p-6 rounded">
             <h2 className="text-lg font-semibold mb-2">Course Summary</h2>

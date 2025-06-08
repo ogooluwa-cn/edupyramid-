@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaFacebook } from "react-icons/fa";
+
 import { FaCalendarAlt, FaCertificate, FaTag } from 'react-icons/fa';
 
 
@@ -18,13 +20,7 @@ export default function Home() {
       <header className="sticky top-0 z-50 bg-white shadow transition-all duration-300 animate__animated animate__fadeInDown">
         <div className="flex justify-between items-center ">
           <div className="text-xl font-bold text-blue-800 animate__animated animate__fadeInLeft flex">
-           <Image
-            className="w-26 h-20"
-            src="/logo2.jpg"
-            alt="User 1"
-            width={104}  // 26 * 4 (Tailwind default scale is 4px)
-            height={80}  // 20 * 4
-          />
+          <h1 className="font-serif text-[30px]">Edu<span className="font-mono font-bold text-[50px] ml-1 text-blue-900">Pyramid</span></h1>
          </div>
 
           
@@ -34,16 +30,23 @@ export default function Home() {
             <Link 
             href='/course' className="hover:text-blue-800 transition"
             >
-              Courses
+              Programmes
               </Link>
-            <a href="#" className="hover:text-blue-800 transition">About</a>
-            <a href="#" className="hover:text-blue-800 transition">Contact</a>
+
+            
+            <a href="#" className="hover:text-blue-800 transition">LMS</a>
+             <Link 
+            href='/more' className="hover:text-blue-800 transition"
+            >
+              More
+              </Link>
             <Link
               href="/login"
               className="bg-blue-800 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
             >
               Sign in
             </Link>
+            
           </nav>
         </div>
       </header>
@@ -125,25 +128,30 @@ export default function Home() {
           Take the first step towards achieving your goals. Join thousands of students and professionals who are transforming their lives through knowledge and skills.
         </p>
         <button className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-lg shadow-lg transition-all duration-300">
-          Explore Courses
+          <Link 
+            href='/course' className="hover:text-blue-800 transition"
+            >
+              Explore Programmes
+              </Link>
+            
         </button>
       </section>
 
       <footer className="bg-blue-900 text-white py-12 px-5 animate__animated animate__fadeInUp">
         <div className="flex flex-col md:flex-row justify-between max-w-6xl mx-auto">
           <div>
-            <h3 className="font-bold text-lg mb-2">EduSkill</h3>
+            <h3 className="font-bold text-lg mb-2">EduPyramid</h3>
             <p className="text-sm text-blue-200 max-w-sm">
-              EduSkill is dedicated to providing accessible, high-quality education for learners of all levels. Our platform is designed to bridge the gap between ambition and achievement.
+              EduPyramid is dedicated to providing accessible, high-quality education for learners of all levels. Our platform is designed to bridge the gap between ambition and achievement.
             </p>
           </div>
           <div>
             <h4 className="font-semibold mb-2">Quick Links</h4>
             <ul className="text-sm space-y-1">
               <li><a href="#" className="hover:underline">Home</a></li>
-              <li><a href="#" className="hover:underline">Courses</a></li>
-              <li><a href="#" className="hover:underline">About Us</a></li>
-              <li><a href="#" className="hover:underline">Contact</a></li>
+              <li><a href="#" className="hover:underline">programmes</a></li>
+              <li><a href="#" className="hover:underline">LMS</a></li>
+              <li><a href="#" className="hover:underline">more</a></li>
             </ul>
           </div>
           <div>
@@ -151,12 +159,12 @@ export default function Home() {
             <div className="flex gap-4">
               <a href="#"><Image src="/twitter.png" alt="Twitter" width={24} height={24} /></a>
               <a href="#"><Image src="/instargram.jpg" alt="Instagram" width={24} height={24} /></a>
-              <a href="#"><Image src="/icons/facebook.jpg" alt="Facebook" width={24} height={24} /></a>
+              <FaFacebook  className="w-10 h-5 m-0"  />
             </div>
           </div>
         </div>
         <p className="text-center mt-8 text-blue-100 text-sm">
-          © 2024 EduSkill - Learning Management System. All rights reserved.
+          © 2024 EduPyramid - Learning Management System. All rights reserved.
         </p>
       </footer>
     </>
