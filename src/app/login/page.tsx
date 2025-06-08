@@ -16,7 +16,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
     
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
-        <h2 className="text-2xl font-semibold text-center text-blue-900">LMS Institute</h2>
+       
          
         <h3 className="text-xl font-bold text-center text-blue-900 mt-2">Login or Enroll</h3>
         <p className="text-center text-gray-600 mt-2 mb-6">

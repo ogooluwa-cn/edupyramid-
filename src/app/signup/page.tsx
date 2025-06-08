@@ -81,7 +81,7 @@ export default function SignUpPage() {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-white px-6 sm:px-8 lg:px-10 animate__animated animate__fadeIn">
         <div className="bg-white p-10 rounded-xl shadow-lg max-w-lg w-full">
           <header className="mb-8 text-center">
-            <h1 className="text-4xl font-extrabold text-blue-900">LMS Institute</h1>
+        
             <p className="text-lg text-blue-800 mt-2 font-semibold">Create Your Account</p>
             <p className="text-gray-600 mt-2 max-w-xs mx-auto">
               Sign up to get started with your learning journey.

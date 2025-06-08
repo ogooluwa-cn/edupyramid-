@@ -6,12 +6,14 @@ import Head from 'next/head';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import {useState} from 'react';
 import { FaFacebook } from "react-icons/fa";
 
 import { FaCalendarAlt, FaCertificate, FaTag } from 'react-icons/fa';
-
+import {  FaBars, FaTimes } from 'react-icons/fa';
 
 export default function Home() {
+   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
     <>
       <Head>
@@ -22,39 +24,42 @@ export default function Home() {
         />
       </Head>
 
-      <header className="sticky top-0 z-50 bg-white shadow transition-all duration-300 animate__animated animate__fadeInDown">
-        <div className="flex justify-between items-center ">
-          <div className="text-xl font-bold text-blue-800 animate__animated animate__fadeInLeft flex">
-          <h1 className="font-serif text-[30px]">Edu<span className="font-mono font-bold text-[50px] ml-1 text-blue-900">Pyramid</span></h1>
-         </div>
+      <header className="sticky top-0 z-50 bg-white shadow transition-all duration-300 animate__animated animate__fadeInDown px-4">
+        <div className="flex justify-between items-center py-4">
+          <h1 className="font-serif text-[26px] sm:text-[30px] text-blue-800">
+            Edu<span className="font-mono font-bold text-[40px] sm:text-[50px] text-blue-900 ml-1">Pyramid</span>
+          </h1>
 
-          
-         
-          <nav className="flex gap-6 items-center animate__animated animate__fadeInRight">
+          {/* Desktop Menu */}
+          <nav className="hidden md:flex gap-6 items-center">
             <a href="#" className="hover:text-blue-800 transition">Home</a>
-            <Link 
-            href='/course' className="hover:text-blue-800 transition"
-            >
-              Programmes
-              </Link>
-
-            
+            <Link href="/course" className="hover:text-blue-800 transition">Programmes</Link>
             <a href="#" className="hover:text-blue-800 transition">LMS</a>
-             <Link 
-            href='/more' className="hover:text-blue-800 transition"
-            >
-              More
-              </Link>
-            <Link
-              href="/login"
-              className="bg-blue-800 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-            >
-              Sign in
-            </Link>
-            
+            <Link href="/more" className="hover:text-blue-800 transition">More</Link>
+            <Link href="/login" className="bg-blue-800 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Sign in</Link>
           </nav>
+
+          {/* Mobile Toggle Button */}
+          <button
+            className="md:hidden text-blue-800 text-2xl"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden flex flex-col gap-4 px-4 pb-4 animate__animated animate__fadeInDown">
+            <a href="#" className="hover:text-blue-800 transition">Home</a>
+            <Link href="/course" className="hover:text-blue-800 transition">Programmes</Link>
+            <a href="#" className="hover:text-blue-800 transition">LMS</a>
+            <Link href="/more" className="hover:text-blue-800 transition">More</Link>
+            <Link href="/login" className="bg-blue-800 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Sign in</Link>
+          </div>
+        )}
       </header>
+
 
       <main className="text-center py-24 px-5 bg-gradient-to-b from-blue-50 to-white animate__animated animate__fadeIn">
         <h2 className="text-lg text-gray-600 animate__animated animate__fadeInUp animate__delay-1s">Empowering Education for All</h2>
