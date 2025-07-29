@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -9,21 +9,27 @@ export default function RegisterStep3() {
   const searchParams = useSearchParams();
   const type = searchParams.get('type');
 
-  // Only allow Regular applicants
-  if (type !== 'Regular') {
-    if (typeof window !== 'undefined') {
+  const [isAllowed, setIsAllowed] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    if (type === 'Regular') {
+      setIsAllowed(true);
+    } else {
       router.push('/registration/form');
     }
-    return null;
-  }
+  }, [type, router]);
 
+  // While checking, render nothing (or a loading spinner)
+  if (isAllowed === null) return null;
+
+  // If redirected, this won't render
+  // If allowed, this returns the form
   const [institution, setInstitution] = useState('');
   const [supervisor, setSupervisor] = useState('');
   const [supervisorPhone, setSupervisorPhone] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Navigate to step 4 or final submission
     router.push('/registration/step4');
   };
 
