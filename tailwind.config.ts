@@ -2,168 +2,176 @@
 export default {
   darkMode: ["class"],
   content: [
-  "./index.html",
-  "./src/**/*.{js,ts,jsx,tsx}",
-],
-theme: {
+    "./index.html",
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
     extend: {
       colors: {
         error: {
-          unsuccessful: '#EA4335'
+          unsuccessful: "#EA4335",
         },
         success: {
-          successful: '#BDA109'
+          successful: "#BDA109",
         },
         main: {
-          '100': '#BFA256'
+          100: "#BFA256",
         },
-        customBlack: '#000000',
-        customWhite: '#FFFFFF',
-        greyColor: '#3571f3',
-        pannelBlack: '#1F1E25',
-        textColor: '#0d027b',
+        customBlack: "#000000",
+        customWhite: "#FFFFFF",
+        greenColor1: "#34B525",
+        greenColor2: "#1ACC7B",
+        greenColor3: "#0CB86A",
+        greenColor5: "#07475E",
+        blueColor1: "#0D0A16",
+        blueColor2: "#080527",
+        blueColor3: "#060419",
+        textColor: "#0d027b",
+        backColor: "#e8f8f5",
+        orangeColor: "#f39c12",
         accent: {
-          '100': '#EDCA2C',
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))'
+          100: "#EDCA2C",
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
         },
         secondary: {
-          '100': '#D4972B',
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))'
+          100: "#D4972B",
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
         neutral: {
-          thinGrey: '#ECECEC'
+          thinGrey: "#ECECEC",
         },
         button: {
-          brandCore: '#0c0369'
+          brandCore: "#0c0369",
         },
         gray: {
-          lightGray: '#D3D3D3',
-          darkGray: '#D3D3D3',
-          thinGray: '#ECECEC',
-          transGray: '#ffffffcc',
-          littleGray: '#ffffff33',
-          uniqueGray: '#E0E4E7',
-          onGray: '#A9A9A9',
-          circleGray: '#D9D9D9',
-          circleTextGray: '#9D9D9D',
-          selectGray: '#F9F9F9'
+          lightGray: "#D9D9D9",
+          darkGray: "#D3D3D3",
+          thinGray: "#ECECEC",
+          transGray: "#ffffffcc",
+          littleGray: "#ffffff33",
+          uniqueGray: "#E0E4E7",
+          onGray: "#A9A9A9",
+          circleGray: "#D9D9D9",
+          circleTextGray: "#9D9D9D",
+          selectGray: "#F9F9F9",
         },
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))'
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))'
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
         },
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))'
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))'
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
         destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))'
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
         },
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
         chart: {
-          '1': 'hsl(var(--chart-1))',
-          '2': 'hsl(var(--chart-2))',
-          '3': 'hsl(var(--chart-3))',
-          '4': 'hsl(var(--chart-4))',
-          '5': 'hsl(var(--chart-5))'
-        }
+          1: "hsl(var(--chart-1))",
+          2: "hsl(var(--chart-2))",
+          3: "hsl(var(--chart-3))",
+          4: "hsl(var(--chart-4))",
+          5: "hsl(var(--chart-5))",
+        },
       },
       screens: {
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1536px',
-        smMax: {
-          max: '639px'
-        },
-        mdMax: {
-          max: '767px'
-        },
-        lgMax: {
-          max: '1023px'
-        }
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1536px",
+        smMax: { max: "639px" },
+        mdMax: { max: "767px" },
+        lgMax: { max: "1023px" },
       },
       borderRadius: {
-        radius: '8px',
-        bigRadius: '10px',
-        biggerRadius: '15px',
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)'
+        radius: "8px",
+        bigRadius: "10px",
+        biggerRadius: "50px",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       backgroundColor: {
-        customBg: '#1F1E25',
-        subBg: '#F5F5F5',
-        successfull: '#BDA109',
-        red: '#FD3549'
+        customBg: "#1F1E25",
+        subBg: "#F5F5F5",
+        successfull: "#BDA109",
+        red: "#FD3549",
       },
       fontSize: {
-        'title-mobile': '1.125rem',
-        'title-desktop': '1.75rem',
-        'subtitle-mobile': '0.875rem',
-        'subtitle-desktop': '1rem',
-        small: '10px',
-        medium: '12px',
-        mid: '14px',
-        normal: '16px',
-        big: '50px'
+        "title-mobile": "1.125rem",
+        "title-desktop": "1.75rem",
+        "subtitle-mobile": "0.875rem",
+        "subtitle-desktop": "1rem",
+        small: "10px",
+        medium: "12px",
+        mid: "14px",
+        normal: "20px",
+        big: "50px",
       },
       fontFamily: {
-        sans: [
-          'Noto Sans',
-          'sans-serif'
+        sans: ["Noto Sans", "sans-serif"],
+        acme: ["Acme", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
+        playfair: ["Playfair Display", "serif"],
+        fira: ["Fira Code", "monospace"],
+        pacifico: ["Pacifico", "cursive"],
+        fredoka: ["Fredoka", "sans-serif"],
+        ancizar: ['Ancizar Sans', '"Londrina Outline"', "cursive"],
+        sfcompact: [
+          "SF Compact",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "sans-serif",
         ],
-        acme: [
-          'Acme',
-          'sans-serif'
-        ],
-        inter: [
-          'Inter',
-          'sans-serif'
-        ],
-        poppins: [
-          'Poppins',
-          'sans-serif'
-        ]
       },
       borderColor: {
-        'white-transparent': '#ffffff33',
-        littleGray: '#ffffff33',
-        successfull: '#BDA109'
+        "white-transparent": "#ffffff33",
+        littleGray: "#ffffff33",
+        successfull: "#BDA109",
       },
       borderWidth: {
-        '1': '1.03px'
-      }
-    }
+        1: "1.03px",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
   },
-plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate")],
 };
-
-/**
- * Font weights reference (use in Tailwind classes like `font-extrabold`, `font-black`, etc):
- * - font-thin        => 100
- * - font-extralight  => 200
- * - font-light       => 300
- * - font-normal      => 400
- * - font-medium      => 500
- * - font-semibold    => 600
- * - font-bold        => 700
- * - font-extrabold   => 800
- * - font-black       => 900
- */
