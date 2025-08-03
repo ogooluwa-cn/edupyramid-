@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
-
+import Image from 'next/image';
 export default function RegisterStep4() {
   const router = useRouter();
   const [email, setEmail] = useState('');
@@ -58,6 +58,20 @@ export default function RegisterStep4() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#F9FAFB] px-4">
+            <div className="hidden lg:block w-1/2 relative">
+              <Image
+                src="/student3.png"
+                alt="Signup Visual"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-r-[2rem]"
+              />
+              <div className="absolute bottom-6 left-6">
+                <button className="bg-black text-white text-xs py-2 px-4 rounded-full">
+                  Go back to website
+                </button>
+              </div>
+            </div>
       <div className="w-full max-w-md bg-white p-6 md:p-8 rounded-2xl shadow-md">
         <div className="mb-6 text-center">
           <h1 className="text-[28px] font-bold text-[#1E1E1E]">Create an account</h1>

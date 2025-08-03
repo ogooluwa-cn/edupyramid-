@@ -1,5 +1,5 @@
 'use client';
-
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
@@ -77,6 +77,20 @@ export default function RegisterStep2Form() {
 
   return (
     <div className="w-full max-w-md">
+            <div className="hidden lg:block w-1/2 relative">
+              <Image
+                src="/student3.png"
+                alt="Signup Visual"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-r-[2rem]"
+              />
+              <div className="absolute bottom-6 left-6">
+                <button className="bg-black text-white text-xs py-2 px-4 rounded-full">
+                  Go back to website
+                </button>
+              </div>
+            </div>
       <h1 className="text-2xl font-bold mb-2 text-center">Create an account</h1>
       <p className="text-center text-gray-600 mb-6">
         Join us to launch your tech or creative career!
