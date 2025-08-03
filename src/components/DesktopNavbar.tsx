@@ -4,9 +4,10 @@ import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function DesktopNavbar() {
-    
+      const router = useRouter();
   return (
     <nav className="hidden md:flex justify-between items-center w-full  ">
       {/* Logo */}
@@ -41,7 +42,9 @@ export default function DesktopNavbar() {
         <button className="w-36 h-12 rounded-full border-2 border-blueColor2 text-black">
           Log in
         </button>
-        <button className="w-48 h-12 rounded-full bg-blueColor3 border-2 border-blueColor2 text-white flex items-center justify-center gap-2">
+        <button className="w-48 h-12 rounded-full bg-blueColor3 border-2 border-blueColor2 text-white flex items-center justify-center gap-2"
+        onClick={() => router.push('/registration/step1')}
+        >
           Let’s Get Started
          
         </button>

@@ -45,7 +45,7 @@ export default function Home() {
             {/* CTA Button */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start mt-6 gap-6">
               <button
-                onClick={() => router.push('/registration')}
+                onClick={() => router.push('/registration/step1')}
 
                 className="w-[230px] h-[60px] sm:h-[70px] bg-blueColor3 text-white rounded-full flex items-center justify-center gap-2"
               >

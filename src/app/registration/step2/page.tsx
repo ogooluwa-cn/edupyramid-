@@ -1,99 +1,163 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 
-export default function RegisterStep2() {
-  const router = useRouter();
+const courseTitles = [
+  'UI/UX Design',
+  'Database Management',
+  'Front-End Engineering',
+  'Screenwriting',
+  'Graphic Design',
+  'Generative AI Tools',
+  'Desktop Publishing',
+  'Virtual Assistant',
+];
+
+const programmeOptions = ['IT', 'SIWES', 'Regular'];
+
+export default function RegisterStep2Form() {
+  const [email, setEmail] = useState('');
+  const [otpCode, setOtpCode] = useState('');
   const [course, setCourse] = useState('');
   const [programme, setProgramme] = useState('');
 
-  const handleProceed = () => {
-    // Placeholder for form validation and navigation
-    router.push('/registration/step3');
+  const router = useRouter();
+
+  useEffect(() => {
+    const storedEmail = localStorage.getItem('userEmail');
+    if (storedEmail) {
+      setEmail(storedEmail);
+    }
+  }, []);
+
+  const mutation = useMutation({
+    mutationFn: async () => {
+      const response = await fetch(
+        'https://edupyramid-new-backend.onrender.com/step2',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email,
+            otp: otpCode,
+            course,
+            programme,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data?.message || 'OTP verification failed');
+      }
+
+      localStorage.setItem('userProgramme', programme);
+      localStorage.setItem('userCourse', course);
+
+      if (programme === 'Regular') {
+        router.push('/register/step4');
+      } else {
+        router.push('/register/step3');
+      }
+    },
+  });
+
+  const handleSubmit = () => {
+    if (!email || !otpCode || !course || !programme) {
+      alert('Please fill in all fields');
+      return;
+    }
+    mutation.mutate();
   };
 
   return (
-    <main className="min-h-screen bg-[#3B0A58] flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-6xl bg-white rounded-3xl grid grid-cols-1 lg:grid-cols-2 overflow-hidden shadow-xl">
-        {/* Left: Image and Back Button */}
-        <div className="relative hidden lg:block">
-          <Image
-            src="/student3.png"
-            alt="Smiling woman waving during video call"
-            width={500}
-            height={500}
-            className="h-full w-full object-cover"
-          />
-          <button
-            className="absolute bottom-4 left-4 bg-black text-white px-4 py-2 rounded-full text-sm"
-            onClick={() => router.push('/')}
-          >
-            Go back to website
-          </button>
-        </div>
+    <div className="w-full max-w-md">
+      <h1 className="text-2xl font-bold mb-2 text-center">Create an account</h1>
+      <p className="text-center text-gray-600 mb-6">
+        Join us to launch your tech or creative career!
+      </p>
 
-        {/* Right: Form */}
-        <div className="w-full px-6 py-10 sm:px-12 flex flex-col justify-center">
-          <h1 className="text-2xl md:text-3xl font-bold text-center text-[#1A1A1A]">EDU
-            <span className="text-green-500 ml-1">▲</span>
-          </h1>
-          <h2 className="text-xl font-semibold text-center mt-4">Create an account</h2>
-          <p className="text-sm text-center text-gray-500 mb-6">
-            Join us to launch your tech or creative career!
-          </p>
-
-          {/* Steps Indicator */}
-          <div className="flex justify-center gap-4 mb-6">
-            {['Personal Information', 'Programme/Course', 'Supervision Information', 'Security'].map((step, index) => (
-              <div
-                key={index}
-                className={`flex flex-col items-center text-xs ${index === 1 ? 'text-black' : 'text-gray-400'}`}
-              >
-                <div className={`w-3 h-3 mb-1 rounded-full ${index === 1 ? 'bg-black' : 'bg-gray-300'}`}></div>
-                {step}
-              </div>
-            ))}
-          </div>
-
-          {/* Select Fields */}
-          <div className="space-y-4">
-            <div>
-              <label className="text-sm text-gray-700 mb-1 block">Course</label>
-              <select
-                value={course}
-                onChange={(e) => setCourse(e.target.value)}
-                className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:border-blue-500"
-              >
-                <option value="">Select</option>
-                <option value="web">Web Development</option>
-                <option value="design">UI/UX Design</option>
-              </select>
+      <div className="flex justify-between items-center mb-8">
+        {['Personal Info', 'Programme', 'Supervision', 'Security'].map((label, index) => (
+          <div key={label} className="flex flex-col items-center text-center text-[10px] sm:text-xs">
+            <div
+              className={`w-6 h-6 rounded-full flex items-center justify-center mb-1 font-medium ${index === 0 ? 'bg-black text-white' : 'bg-gray-200 text-gray-500'
+                }`}
+            >
+              {index + 1}
             </div>
-
-            <div>
-              <label className="text-sm text-gray-700 mb-1 block">Programme</label>
-              <select
-                value={programme}
-                onChange={(e) => setProgramme(e.target.value)}
-                className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:border-blue-500"
-              >
-                <option value="">Select</option>
-                <option value="beginner">Beginner</option>
-                <option value="intermediate">Intermediate</option>
-              </select>
-            </div>
+            <span className="text-gray-500">{label}</span>
           </div>
-
-          <button
-            onClick={handleProceed}
-            className="mt-6 bg-black text-white w-full py-3 rounded-full text-center hover:bg-gray-900"
-          >
-            Proceed
-          </button>
-        </div>
+        ))}
       </div>
-    </main>
+
+      <div className="space-y-4">
+        <div>
+          <label className="block mb-1 font-medium">Email</label>
+          <input
+            type="email"
+            value={email}
+            disabled
+            className="w-full p-2 border border-gray-300 rounded bg-gray-100"
+          />
+        </div>
+
+        <div>
+          <label className="block mb-1 font-medium">Course</label>
+          <select
+            value={course}
+            onChange={(e) => setCourse(e.target.value)}
+            className="w-full p-2 border border-gray-300 rounded"
+          >
+            <option value="">Select</option>
+            {courseTitles.map((title, index) => (
+              <option key={index} value={title}>
+                {title}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label className="block mb-1 font-medium">Programme</label>
+          <select
+            value={programme}
+            onChange={(e) => setProgramme(e.target.value)}
+            className="w-full p-2 border border-gray-300 rounded"
+          >
+            <option value="">Select</option>
+            {programmeOptions.map((prog, index) => (
+              <option key={index} value={prog}>
+                {prog}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label className="block mb-1 font-medium">OTP Code</label>
+          <input
+            type="text"
+            value={otpCode}
+            onChange={(e) => setOtpCode(e.target.value)}
+            placeholder="Enter OTP code"
+            className="w-full p-2 border border-gray-300 rounded"
+          />
+        </div>
+
+        <button
+          onClick={handleSubmit}
+          className="w-full bg-black text-white py-2 rounded hover:bg-gray-800"
+          disabled={mutation.isPending}
+        >
+          {mutation.isPending ? 'Verifying...' : 'Proceed'}
+        </button>
+      </div>
+    </div>
   );
 }

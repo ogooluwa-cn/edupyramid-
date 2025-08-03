@@ -4,10 +4,10 @@ import React, { useState } from 'react';
 import { FaBars, FaTimes, FaArrowRight } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
-
+import { useRouter } from 'next/navigation';
 export default function MobileNavbar() {
   const [isOpen, setIsOpen] = useState(false);
-
+      const router = useRouter();
   return (
     <nav className="md:hidden bg-gray-lightGray px-6 py-4 relative z-50">
       <div className="flex justify-between items-center">
@@ -55,7 +55,9 @@ export default function MobileNavbar() {
             <button className="w-full rounded-full border border-black py-3 font-medium">
               Log In
             </button>
-            <button className="w-full rounded-full bg-black text-white py-3 flex items-center justify-center gap-2">
+            <button className="w-full rounded-full bg-black text-white py-3 flex items-center justify-center gap-2"
+             onClick={() => router.push('/registration/step1')}
+            >
               Let’s Get Started
               <FaArrowRight className="text-white" />
             </button>

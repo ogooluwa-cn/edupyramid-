@@ -1,16 +1,18 @@
 // app/registration/form/page.tsx
+'use client';
+
 import Image from 'next/image';
 import { Suspense } from 'react';
 import RegisterFormContent from '@/components/RegisterFormContent';
 
 export default function RegisterFormPage() {
   return (
-    <div className="flex h-screen w-full">
-      {/* Left Side Image */}
-      <div className="w-1/2 hidden lg:block relative">
+    <div className="flex flex-col lg:flex-row h-screen w-full">
+      {/* Left image (hidden on small screens) */}
+      <div className="hidden lg:block w-1/2 relative">
         <Image
           src="/student3.png"
-          alt="Person waving"
+          alt="Signup Visual"
           layout="fill"
           objectFit="cover"
           className="rounded-r-[2rem]"
@@ -22,9 +24,9 @@ export default function RegisterFormPage() {
         </div>
       </div>
 
-      {/* Right Side Form with Suspense */}
-      <div className="w-full lg:w-1/2 flex justify-center items-center bg-white px-6">
-        <Suspense fallback={<div>Loading form...</div>}>
+      {/* Right form */}
+      <div className="w-full lg:w-1/2 flex justify-center items-center px-6 py-10 bg-white overflow-y-auto">
+        <Suspense fallback={<div>Loading...</div>}>
           <RegisterFormContent />
         </Suspense>
       </div>

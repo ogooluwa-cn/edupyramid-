@@ -4,12 +4,11 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 
-export default function RegisterStep3() {
+export default function RegisterStep4() {
   const router = useRouter();
   const [email, setEmail] = useState('');
-  const [institution, setInstitution] = useState('');
-  const [supervisorName, setSupervisorName] = useState('');
-  const [supervisorPhone, setSupervisorPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   useEffect(() => {
     const storedEmail = localStorage.getItem('userEmail');
@@ -23,15 +22,10 @@ export default function RegisterStep3() {
 
   const mutation = useMutation({
     mutationFn: async () => {
-      const res = await fetch('https://edupyramid-new-backend.onrender.com/step3', {
+      const res = await fetch('https://edupyramid-new-backend.onrender.com/step4', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          institution,
-          supervisorName,
-          supervisorPhone,
-        }),
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await res.json();
@@ -39,20 +33,23 @@ export default function RegisterStep3() {
       return data;
     },
     onSuccess: () => {
-      localStorage.setItem(
-        'supervisionInfo',
-        JSON.stringify({ institution, supervisorName, supervisorPhone })
-      );
-      router.push('/register/step4');
+      alert('Registration completed!');
+      localStorage.clear();
+      router.push('/Home');
     },
-    onError: (error: any) => {
-      alert(error.message || 'Something went wrong');
+    onError: (err: any) => {
+      alert(err.message || 'Something went wrong');
     },
   });
 
-  const handleProceed = () => {
-    if (!institution || !supervisorName || !supervisorPhone) {
+  const handleSubmit = () => {
+    if (!password || !confirmPassword) {
       alert('Please fill all fields');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
       return;
     }
 
@@ -63,9 +60,7 @@ export default function RegisterStep3() {
     <div className="flex items-center justify-center min-h-screen bg-[#F9FAFB] px-4">
       <div className="w-full max-w-md bg-white p-6 md:p-8 rounded-2xl shadow-md">
         <div className="mb-6 text-center">
-          <h1 className="text-[28px] font-bold text-[#1E1E1E]">
-            Create an account
-          </h1>
+          <h1 className="text-[28px] font-bold text-[#1E1E1E]">Create an account</h1>
           <p className="text-sm text-[#5F5F5F]">
             Join us to launch your tech or creative career!
           </p>
@@ -80,8 +75,8 @@ export default function RegisterStep3() {
               'Supervision Information',
               'Security',
             ];
-            const isCurrent = index === 2;
-            const isCompleted = index < 2;
+            const isCurrent = index === 3;
+            const isCompleted = index < 3;
 
             return (
               <div
@@ -113,41 +108,33 @@ export default function RegisterStep3() {
           })}
         </div>
 
-        {/* Form */}
+        {/* Form Fields */}
         <div className="space-y-4">
           <input
-            type="text"
-            placeholder="Institution"
-            value={institution}
-            onChange={(e) => setInstitution(e.target.value)}
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="w-full px-4 py-3 border border-[#D1D5DB] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-black"
           />
 
           <input
-            type="text"
-            placeholder="Name of supervisor"
-            value={supervisorName}
-            onChange={(e) => setSupervisorName(e.target.value)}
-            className="w-full px-4 py-3 border border-[#D1D5DB] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-black"
-          />
-
-          <input
-            type="tel"
-            placeholder="Supervisor’s phone number"
-            value={supervisorPhone}
-            onChange={(e) => setSupervisorPhone(e.target.value)}
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             className="w-full px-4 py-3 border border-[#D1D5DB] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-black"
           />
         </div>
 
         <button
-          onClick={handleProceed}
+          onClick={handleSubmit}
           disabled={mutation.isPending}
           className={`w-full py-3 mt-6 text-sm font-semibold text-white rounded-lg ${
             mutation.isPending ? 'bg-gray-400' : 'bg-black hover:bg-[#333]'
           }`}
         >
-          {mutation.isPending ? 'Submitting...' : 'Proceed'}
+          {mutation.isPending ? 'Submitting...' : 'Submit'}
         </button>
       </div>
     </div>
