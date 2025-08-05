@@ -89,8 +89,8 @@ export default function Home() {
 
         {/* Decorative Icons */}
         <div className="relative mb-12 hidden md:block">
-          <img src="/icons/arrow.png" alt="Arrow" className="w-12 h-12 absolute bottom-[-40px] right-[310px]" />
-          <img src="/icons/noto.png" alt="Noto" className="w-16 h-16 absolute bottom-[200px] left-[290px]" />
+          <img src="/icons/arrow.png" alt="Arrow" className="w-12 h-12 absolute top-[-50px] left-[460px]" />
+          <img src="/icons/noto.png" alt="Noto" className="w-16 h-16 absolute top-[-150px] left-[1078px]" />
         </div>
 
         {/* Learning Image */}
