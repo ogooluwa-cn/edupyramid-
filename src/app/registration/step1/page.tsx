@@ -2,7 +2,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Suspense } from 'react';
+
 import RegisterFormContent from '@/components/RegisterFormContent';
 
 export default function RegisterFormPage() {

@@ -43,7 +43,7 @@ export default function DesktopNavbar() {
           Log in
         </button>
         <button className="w-48 h-12 rounded-full bg-blueColor3 border-2 border-blueColor2 text-white flex items-center justify-center gap-2"
-        onClick={() => router.push('/registration/step1')}
+        onClick={() => router.push('/registration')}
         >
           Let’s Get Started
          

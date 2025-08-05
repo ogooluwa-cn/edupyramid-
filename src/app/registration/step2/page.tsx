@@ -41,12 +41,13 @@ export default function RegisterStep2Form() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            email,
-            otp: otpCode,
-            course,
-            programme,
-          }),
+      body: JSON.stringify({
+        email,
+        otpCode, // ✅ key now matches backend
+        course,
+        programme,
+      }),
+
         }
       );
 
@@ -60,9 +61,9 @@ export default function RegisterStep2Form() {
       localStorage.setItem('userCourse', course);
 
       if (programme === 'Regular') {
-        router.push('/register/step4');
+        router.push('/registration/step4');
       } else {
-        router.push('/register/step3');
+        router.push('/registration/step3');
       }
     },
   });
@@ -78,7 +79,8 @@ export default function RegisterStep2Form() {
   return (
        <div className="flex flex-col lg:flex-row h-screen w-full">
       <RegisterImage/>
-      <div className="w-full lg:w-1/2 flex justify-center items-center px-6 py-10 bg-white overflow-y-auto">
+       <div className="h-1/2 md:h-screen w-full md:w-1/2 bg-white rounded-b-3xl md:rounded-none md:rounded-r-3xl p-6 sm:p-10 md:p-12 flex flex-col items-center text-center space-y-6">
+
 
       <h1 className="text-2xl font-bold mb-2 text-center">Create an account</h1>
       <p className="text-center text-gray-600 mb-6">
@@ -87,9 +89,9 @@ export default function RegisterStep2Form() {
 
       <div className="flex justify-between items-center mb-8">
         {['Personal Info', 'Programme', 'Supervision', 'Security'].map((label, index) => (
-          <div key={label} className="flex flex-col items-center text-center text-[10px] sm:text-xs">
+          <div key={label} className="flex flex-col  items-center text-center text-[10px] sm:text-xs ">
             <div
-              className={`w-6 h-6 rounded-full flex items-center justify-center mb-1 font-medium ${index === 0 ? 'bg-black text-white' : 'bg-gray-200 text-gray-500'
+              className={`w-6 h-6 rounded-full flex items-center gap-[30px]  justify-center mb-1 font-medium ${index === 0 ? 'bg-black text-white' : 'bg-gray-200 text-gray-500'
                 }`}
             >
               {index + 1}
@@ -99,14 +101,14 @@ export default function RegisterStep2Form() {
         ))}
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-4 w-1/2">
         <div>
           <label className="block mb-1 font-medium">Email</label>
           <input
             type="email"
             value={email}
             disabled
-            className="w-full p-2 border border-gray-300 rounded bg-gray-100"
+            className="w-full p-2 border border-gray-300 rounded-full bg-gray-100"
           />
         </div>
 
@@ -115,7 +117,7 @@ export default function RegisterStep2Form() {
           <select
             value={course}
             onChange={(e) => setCourse(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-gray-300 rounded-full "
           >
             <option value="">Select</option>
             {courseTitles.map((title, index) => (
@@ -131,7 +133,7 @@ export default function RegisterStep2Form() {
           <select
             value={programme}
             onChange={(e) => setProgramme(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-gray-300 rounded-full"
           >
             <option value="">Select</option>
             {programmeOptions.map((prog, index) => (
@@ -149,13 +151,13 @@ export default function RegisterStep2Form() {
             value={otpCode}
             onChange={(e) => setOtpCode(e.target.value)}
             placeholder="Enter OTP code"
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-gray-300 rounded-full"
           />
         </div>
 
         <button
           onClick={handleSubmit}
-          className="w-full bg-black text-white py-2 rounded hover:bg-gray-800"
+          className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 rounded-full"
           disabled={mutation.isPending}
         >
           {mutation.isPending ? 'Verifying...' : 'Proceed'}

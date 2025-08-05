@@ -56,7 +56,7 @@ export default function MobileNavbar() {
               Log In
             </button>
             <button className="w-full rounded-full bg-black text-white py-3 flex items-center justify-center gap-2"
-             onClick={() => router.push('/registration/step1')}
+             onClick={() => router.push('/registration')}
             >
               Let’s Get Started
               <FaArrowRight className="text-white" />
