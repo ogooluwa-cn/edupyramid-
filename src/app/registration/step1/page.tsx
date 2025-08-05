@@ -26,9 +26,9 @@ export default function RegisterFormPage() {
 
       {/* Right form */}
       <div className="w-full lg:w-1/2 flex justify-center items-center px-6 py-10 bg-white overflow-y-auto">
-        <Suspense fallback={<div>Loading...</div>}>
+      
           <RegisterFormContent />
-        </Suspense>
+      
       </div>
     </div>
   );
