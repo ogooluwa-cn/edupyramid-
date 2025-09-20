@@ -23,8 +23,8 @@ export default function ContactPage() {
                     <div className="flex flex-col items-center text-center">
                         <img src="/icons/call.png" className="h-24 w-24 text-gray-700 mb-2" />
                         <p className="font-bold">Contact Information</p>
-                        <p className="text-sm text-gray-600"><a href="tel:+2347049258491" className="text-sm text-gray-600 hover:underline">
-                            0704 925 8491, 0903 545 6197
+                        <p className="text-sm text-gray-600"><a href="tel:+2349018212652" className="text-sm text-gray-600 hover:underline">
+                            09018212652, 0903 545 6197
                         </a></p>
                     </div>
                 </div>

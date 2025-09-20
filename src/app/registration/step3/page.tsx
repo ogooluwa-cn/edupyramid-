@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import RegisterImage from '@/components/heroImage';
+import RegisterImage from '@/components/heroImage'; 
+import Image from 'next/image';
 
 export default function RegisterStep3Form() {
   const [email, setEmail] = useState('');
@@ -17,7 +18,8 @@ export default function RegisterStep3Form() {
     if (storedEmail) setEmail(storedEmail);
   }, []);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     if (!email || !institution || !supervisorName || !supervisorPhone) {
       alert('Please fill in all fields');
       return;
@@ -52,83 +54,104 @@ export default function RegisterStep3Form() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen w-full">
-      <RegisterImage />
-
-      <div className="h-1/2 md:h-screen w-full md:w-1/2 bg-white rounded-b-3xl md:rounded-none md:rounded-r-3xl p-6 sm:p-10 md:p-12 flex flex-col items-center text-center space-y-6">
-
-        <h1 className="text-2xl font-bold mb-2">Supervision Info</h1>
-        <p className="text-gray-600">Help us identify your institution and supervisor.</p>
-
-        <div className="flex justify-between items-center mb-6">
-          {['Personal Info', 'Programme', 'Supervision', 'Security'].map((label, index) => (
-            <div key={label} className="flex flex-col items-center text-xs">
-              <div
-                className={`w-6 h-6 rounded-full flex items-center justify-center mb-1 font-medium ${
-                  index === 2 ? 'bg-black text-white' : 'bg-gray-200 text-gray-500'
-                }`}
-              >
-                {index + 1}
-              </div>
-              <span className="text-gray-500">{label}</span>
-            </div>
-          ))}
+    <div className="flex flex-col lg:flex-row w-full">
+      {/* Image Section (mobile + desktop) */}
+      <div className="w-full lg:w-1/2 relative h-80 lg:h-auto">
+        <Image
+          src="/student3.png"
+          alt="Signup Visual"
+          fill
+          className="object-cover rounded-b-[2rem] lg:rounded-r-[2rem] lg:rounded-b-none"
+        />
+        <div className="absolute bottom-6 left-6">
+          <button className="bg-black text-white text-xs py-2 px-4 rounded-full">
+            Go back to website
+          </button>
         </div>
+      </div>
 
-        <div className="space-y-4 w-full max-w-md text-left">
-          <div>
+      {/* Form Section */}
+      <div className="w-full lg:w-1/2 flex justify-center items-center px-4 sm:px-6 py-10 bg-white overflow-y-auto">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-md sm:max-w-lg bg-white shadow-lg rounded-2xl px-6 sm:px-8 py-10"
+        >
+               <Image 
+                      src="/icons/logo.png" 
+                      alt="EduPyramid Logo" 
+                      width={120}  
+                      height={40} 
+                      className="mb-6 mx-auto"
+                    />
+          <h2 className="text-3xl font-bold text-center text-black mb-2">Supervision Info</h2>
+          <p className="text-center text-gray-600 mb-6">
+            Help us identify your institution and supervisor.
+          </p>
+
+          <div className="flex justify-between items-center mb-8">
+            {['Personal Info', 'Programme', 'Supervision', 'Security'].map((label, index) => (
+              <div key={label} className="flex flex-col items-center text-center text-[10px] sm:text-xs">
+                <div className={`w-6 h-6 rounded-full flex items-center justify-center mb-1 font-medium ${index === 2 ? 'bg-black text-white' : 'bg-gray-200 text-gray-500'}`}>
+                  {index + 1}
+                </div>
+                <span className="text-gray-500">{label}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mb-4">
             <label className="block mb-1 font-medium">Email</label>
             <input
               type="email"
               value={email}
               disabled
-              className="w-full p-3 border border-gray-300 rounded-md bg-gray-100"
+              className="w-full p-2 border border-gray-300 rounded-full bg-gray-100 text-sm"
             />
           </div>
 
-          <div>
+          <div className="mb-4">
             <label className="block mb-1 font-medium">Institution Name</label>
             <input
               type="text"
               value={institution}
               onChange={(e) => setInstitution(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md"
+              className="w-full p-2 border border-gray-300 rounded-full text-sm"
               placeholder="Enter your institution"
             />
           </div>
 
-          <div>
+          <div className="mb-4">
             <label className="block mb-1 font-medium">Supervisor Name</label>
             <input
               type="text"
               value={supervisorName}
               onChange={(e) => setSupervisorName(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md"
+              className="w-full p-2 border border-gray-300 rounded-full text-sm"
               placeholder="Enter supervisor’s full name"
             />
           </div>
 
-          <div>
+          <div className="mb-6">
             <label className="block mb-1 font-medium">Supervisor Phone</label>
             <input
               type="tel"
               value={supervisorPhone}
               onChange={(e) => setSupervisorPhone(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md"
+              className="w-full p-2 border border-gray-300 rounded-full text-sm"
               placeholder="e.g. 08012345678"
             />
           </div>
 
           <button
-            onClick={handleSubmit}
+            type="submit"
             disabled={loading}
-            className={`w-full py-3 rounded-md text-white font-semibold ${
-              loading ? 'bg-gray-500' : 'bg-black hover:bg-gray-800'
+            className={`w-full py-3 rounded-full text-sm font-semibold transition ${
+              loading ? 'bg-gray-400 cursor-not-allowed text-white' : 'bg-black text-white hover:bg-gray-900'
             }`}
           >
             {loading ? 'Submitting...' : 'Proceed'}
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );

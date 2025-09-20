@@ -253,6 +253,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import countries from 'world-countries';
+import Image from 'next/image';
 
 export default function RegisterFormContent() {
   const router = useRouter();
@@ -323,7 +324,13 @@ export default function RegisterFormContent() {
       onSubmit={handleSubmit}
       className="w-full max-w-md sm:max-w-lg bg-white shadow-lg rounded-2xl px-6 sm:px-8 py-10"
     >
-      <h2 className="text-3xl font-bold text-center text-black mb-2">EDU</h2>
+          <Image 
+            src="/icons/logo.png" 
+            alt="EduPyramid Logo" 
+            width={120}  
+            height={40} 
+            className="mb-6 mx-auto"
+          />
       <p className="text-center text-base font-medium text-gray-700 mb-1">
         Create an account {type ? `as ${type} applicant` : ''}
       </p>

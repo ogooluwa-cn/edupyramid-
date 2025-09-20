@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 export default function DesktopNavbar() {
       const router = useRouter();
   return (
-    <nav className="hidden md:flex justify-between items-center w-full  ">
+    <nav className="hidden md:flex justify-between items-center w-full text-center">
       {/* Logo */}
           <div>
         <Image src="/icons/logo.png" alt="Logo" width={120} height={40} />

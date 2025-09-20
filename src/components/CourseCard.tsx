@@ -20,11 +20,16 @@ const CourseCard: React.FC<CourseCardProps> = ({
 }) => {
   const [showModal, setShowModal] = useState(false);
 
+  const handleCardClick = () => {
+    setShowModal(true);
+    localStorage.setItem('selectedCourse', title);
+  };
+
   return (
     <>
       <div
         className="border-2 border-stone-400 rounded-[30px] text-center shadow-md p-4 hover:shadow-lg transition duration-200 w-full sm:w-[400px] max-w-full m-4 cursor-pointer"
-        onClick={() => setShowModal(true)}
+        onClick={handleCardClick}
       >
         <img
           src={image}
@@ -37,11 +42,13 @@ const CourseCard: React.FC<CourseCardProps> = ({
           <span className="text-gray-600">({reviews} Reviews)</span>
         </div>
         <p className="text-gray-600 text-sm mb-4 text-center">{description}</p>
-        <button className="w-full bg-blue-900 text-white py-2 rounded-md text-sm hover:bg-blue-800">
+        <button
+          className="w-full bg-blue-900 text-white py-2 rounded-md text-sm hover:bg-blue-800"
+          type="button"
+        >
           Explore Course
         </button>
       </div>
-
       {showModal && (
         <CourseModal
           course={{ title, description }}
