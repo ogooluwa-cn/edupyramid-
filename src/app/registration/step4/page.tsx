@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
-import { Eye, EyeOff } from 'lucide-react';
+import * as LucideIcons from 'lucide-react'; // ✅ import all icons
 import Image from 'next/image';
 
 export default function RegisterStep4() {
@@ -14,6 +14,7 @@ export default function RegisterStep4() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
+  // Retrieve stored email from localStorage
   useEffect(() => {
     const storedEmail = localStorage.getItem('userEmail');
     if (storedEmail) {
@@ -31,7 +32,6 @@ export default function RegisterStep4() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
-
       const data = await res.json();
       if (!res.ok) throw new Error(data?.message || 'Submission failed');
       return data;
@@ -59,9 +59,12 @@ export default function RegisterStep4() {
     mutation.mutate();
   };
 
+  // ✅ Destructure icons from LucideIcons
+  const { Eye, EyeOff } = LucideIcons;
+
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
-      {/* Image Section (mobile + desktop) */}
+      {/* Image Section */}
       <div className="w-full lg:w-1/2 relative h-80 lg:h-auto">
         <Image
           src="/student3.png"
@@ -102,9 +105,7 @@ export default function RegisterStep4() {
                 >
                   <div
                     className={`w-6 h-6 rounded-full flex items-center justify-center mb-1 font-medium ${
-                      index === 3
-                        ? 'bg-black text-white'
-                        : 'bg-gray-200 text-gray-500'
+                      index === 3 ? 'bg-black text-white' : 'bg-gray-200 text-gray-500'
                     }`}
                   >
                     {index + 1}

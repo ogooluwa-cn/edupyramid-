@@ -1,3 +1,4 @@
+"use client";
 import PaystackInline from '@/components/PaystackInline';
 
 export default function PaymentPage() {
