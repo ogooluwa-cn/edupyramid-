@@ -26,7 +26,7 @@ export default function RegisterStep4() {
 
   const mutation = useMutation({
     mutationFn: async () => {
-      const res = await fetch('https://edupyramid-backend.onrender.com/step4', {
+      const res = await fetch('https://backend-code-3-3qwp.onrender.com/step4', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

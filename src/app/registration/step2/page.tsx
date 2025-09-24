@@ -36,7 +36,7 @@ export default function RegisterStep2Form() {
   const mutation = useMutation({
     mutationFn: async () => {
       const response = await fetch(
-        'https://edupyramid-backend.onrender.com/step2',
+        'https://backend-code-3-3qwp.onrender.com/step2',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

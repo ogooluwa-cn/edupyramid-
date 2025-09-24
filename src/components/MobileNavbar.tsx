@@ -2,19 +2,32 @@
 
 import React, { useState } from 'react';
 import { FaBars, FaTimes, FaArrowRight } from 'react-icons/fa';
-import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 
-export default function MobileNavbar() {
+type Props = {
+  onNavClick?: (id: string) => void; // 👈 accept clean section id
+};
+
+export default function MobileNavbar({ onNavClick }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
-  // Close menu after clicking a link
-  const handleLinkClick = (href: string) => {
-    setIsOpen(false);
-    if (href.startsWith('/')) {
-      router.push(href);
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    href: string
+  ) => {
+    e.preventDefault();
+    const targetId = href.replace('#', ''); // remove #
+    setIsOpen(false); // close menu
+    if (onNavClick) {
+      onNavClick(targetId); // 👈 trigger bounce
+    } else {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -29,7 +42,13 @@ export default function MobileNavbar() {
 
       {/* Slide-in Menu */}
       {isOpen && (
-        <div className="fixed top-0 left-0 w-full h-full bg-gray-lightGray flex flex-col justify-between px-6 py-8 z-50">
+        <motion.div
+          initial={{ x: '100%' }}
+          animate={{ x: 0 }}
+          exit={{ x: '100%' }}
+          transition={{ duration: 0.3 }}
+          className="fixed top-0 left-0 w-full h-full bg-gray-lightGray flex flex-col justify-between px-6 py-8 z-50"
+        >
           {/* Header */}
           <div className="flex justify-between items-center">
             <Image src="/icons/logo.png" alt="Logo" width={100} height={30} />
@@ -40,61 +59,43 @@ export default function MobileNavbar() {
 
           {/* Navigation Links */}
           <div className="flex flex-col mt-8 text-lg font-semibold text-center">
-            <ul className="flex flex-col gap-4 text-center">
-              <li>
-                <a
-                  href="#hero"
-                  className="hover:text-blueColor3"
-                  onClick={() => setIsOpen(false)}
+            <ul className="flex flex-col gap-6 text-center">
+              {[
+                { name: 'Home', href: '#hero' },
+                { name: 'Courses', href: '#programmes' },
+                { name: 'Study', href: '#study' },
+                { name: 'FAQ', href: '#faq' },
+                { name: 'Contact', href: '#contact' },
+              ].map((link) => (
+                <motion.li
+                  key={link.href}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
                 >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#programmes"
-                  className="hover:text-blueColor3"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Courses
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#study"
-                  className="hover:text-blueColor3"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Study
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#faq"
-                  className="hover:text-blueColor3"
-                  onClick={() => setIsOpen(false)}
-                >
-                  FAQ
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  className="hover:text-blueColor3"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Contact
-                </a>
-              </li>
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleScroll(e, link.href)}
+                    className="hover:text-blueColor3"
+                  >
+                    {link.name}
+                  </a>
+                </motion.li>
+              ))}
             </ul>
           </div>
 
           {/* Footer Buttons */}
           <div className="space-y-4">
-            <button className="w-full rounded-full border border-black py-3 font-medium">
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+              className="w-full rounded-full border border-black py-3 font-medium"
+            >
               Log In
-            </button>
-            <button
+            </motion.button>
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: 'spring', stiffness: 300 }}
               className="w-full rounded-full bg-black text-white py-3 flex items-center justify-center gap-2"
               onClick={() => {
                 setIsOpen(false);
@@ -103,9 +104,9 @@ export default function MobileNavbar() {
             >
               Let’s Get Started
               <FaArrowRight className="text-white" />
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
       )}
     </nav>
   );

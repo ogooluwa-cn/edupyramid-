@@ -294,7 +294,7 @@ export default function RegisterFormContent() {
       const username = `${surname}_${firstName}_${middleName}`.replace(/\s+/g, '');
       const fullPhoneNumber = `${countryCode}${phoneNumber}`;
 
-      const response = await fetch('https://edupyramid-backend.onrender.com/step1', {
+      const response = await fetch('https://backend-code-3-3qwp.onrender.com/step1', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -28,7 +28,7 @@ export default function RegisterStep3Form() {
     setLoading(true);
 
     try {
-      const response = await fetch('https://edupyramid-backend.onrender.com/step3', {
+      const response = await fetch('https://backend-code-3-3qwp.onrender.com/step3', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
