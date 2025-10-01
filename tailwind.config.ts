@@ -28,7 +28,7 @@ export default {
         greenColor5: "#07475E",
         blueColor1: "#0D0A16",
         blueColor2: "#080527",
-        blueColor3: "#060419",
+        blueColor3: "#04011bff",
         textColor: "#0d027b",
         backColor: "#e8f8f5",
         orangeColor: "#f39c12",

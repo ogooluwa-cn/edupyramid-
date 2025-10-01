@@ -1,66 +1,82 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-interface PaystackInlineProps {
+interface PaystackButtonProps {
   email: string;
-  amount: number; // Amount in Naira
+  amount: number; // in Naira
+  publicKey: string;
   onSuccess?: (reference: string) => void;
+  onClose?: () => void;
 }
 
-const PaystackInline: React.FC<PaystackInlineProps> = ({ email, amount, onSuccess }) => {
+const PaystackButton: React.FC<PaystackButtonProps> = ({
+  email,
+  amount,
+  publicKey,
+  onSuccess,
+  onClose,
+}) => {
+  const [paystackReady, setPaystackReady] = useState(false);
+
+  // Load Paystack script once
   useEffect(() => {
-    // Load Paystack script
-    const script = document.createElement('script');
-    script.src = 'https://js.paystack.co/v1/inline.js';
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
+    if (!(window as any).PaystackPop) {
+      const script = document.createElement('script');
+      script.src = 'https://js.paystack.co/v1/inline.js';
+      script.async = true;
+      script.onload = () => setPaystackReady(true);
+      document.body.appendChild(script);
+    } else {
+      setPaystackReady(true);
+    }
   }, []);
 
-  const payWithPaystack = () => {
-    const handler = (window as any).PaystackPop.setup({
-      key: 'pk_live_cd49bc697f702d246623afb4978d0ad1ac4ac3be', // Replace with your live public key
+  const handlePayment = () => {
+    const PaystackPop = (window as any).PaystackPop;
+
+    if (!PaystackPop) {
+      alert('⚠️ Paystack not loaded. Refresh the page.');
+      return;
+    }
+
+    if (amount <= 0) {
+      alert('⚠️ Invalid amount for payment.');
+      return;
+    }
+
+    const handler = PaystackPop.setup({
+      key: publicKey,
       email,
-      amount: amount * 100, // Convert Naira to Kobo
+      amount: amount * 100, // in Kobo
       currency: 'NGN',
-      callback: function (response: any) {
-        alert('Payment successful! Reference: ' + response.reference);
+      callback: (response: any) => {
+        console.log('✅ Payment successful:', response.reference);
         if (onSuccess) onSuccess(response.reference);
-        // Send reference to backend for verification
-        fetch('https://your-backend-url.com/api/verify-paystack', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ reference: response.reference, email }),
-        })
-          .then(res => res.json())
-          .then(data => {
-            if (data.status === 'success') {
-              alert('Payment verified on backend!');
-            } else {
-              alert('Payment verification failed!');
-            }
-          })
-          .catch(() => alert('Error verifying payment!'));
       },
-      onClose: function () {
-        alert('Payment window closed');
+      onClose: () => {
+        console.log('❌ Payment closed by user.');
+        if (onClose) onClose();
       },
     });
+
     handler.openIframe();
   };
 
   return (
     <button
       type="button"
-      onClick={payWithPaystack}
-      className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800"
+      disabled={!paystackReady}
+      onClick={handlePayment}
+      className={`px-6 py-3 rounded-full font-semibold transition ${
+        paystackReady
+          ? 'bg-[#04011bff] text-white hover:bg-blue-800'
+          : 'bg-gray-400 text-gray-200 cursor-not-allowed'
+      }`}
     >
-      Pay Now
+      {paystackReady ? 'Pay Now' : 'Loading...'}
     </button>
   );
 };
 
-export default PaystackInline;
+export default PaystackButton;

@@ -58,7 +58,7 @@ export default function RegisterStep3Form() {
       {/* Image Section (mobile + desktop) */}
       <div className="w-full lg:w-1/2 relative h-80 lg:h-auto">
         <Image
-          src="/student3.png"
+          src="/login.png"
           alt="Signup Visual"
           fill
           className="object-cover rounded-b-[2rem] lg:rounded-r-[2rem] lg:rounded-b-none"

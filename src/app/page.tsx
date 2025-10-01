@@ -30,6 +30,7 @@ export default function Home() {
 
 
   return (
+    
     <motion.div
       className="bg-gray-50"
       animate={isBouncing ? { scale: [1, 1.05, 0.95, 1] } : {}}
@@ -81,7 +82,9 @@ export default function Home() {
               alt="Student"
               className="w-full h-auto max-h-[500px] object-contain"
             />
-            <button className="absolute top-[85%] left-8 w-[240px] h-16 rounded-full border-2 border-blueColor3 text-blueColor3 hidden lg:flex items-center justify-center gap-2">
+            <button className="absolute top-[85%] left-8 w-[240px] h-16 rounded-full border-2 border-blueColor3 text-blueColor3 hidden lg:flex items-center justify-center gap-2"
+                 onClick={() => router.push('/courses')}
+                 >
               Explore courses
               <img
                 src="/icons/arrow-up-dark.png"

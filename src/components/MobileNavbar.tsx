@@ -89,6 +89,10 @@ export default function MobileNavbar({ onNavClick }: Props) {
             <motion.button
               whileTap={{ scale: 0.9 }}
               transition={{ type: 'spring', stiffness: 300 }}
+                 onClick={() => {
+                setIsOpen(false);
+                router.push('/registration/login');
+              }}
               className="w-full rounded-full border border-black py-3 font-medium"
             >
               Log In
