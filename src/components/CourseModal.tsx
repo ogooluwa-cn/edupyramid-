@@ -61,9 +61,7 @@ const CourseModal: React.FC<CourseModalProps> = ({ course, onClose }) => {
       <div
         className="relative rounded-[30px] p-8 w-full max-w-6xl text-white max-h-[90vh] overflow-y-auto shadow-2xl"
         style={{
-          backgroundImage: "url('/icons/card.png')", // 👈 your modal card background
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          background: 'radial-gradient(ellipse at 80% 20%, #0f3c2d 0%, #000 70%)',
         }}
       >
         {/* Close Button */}
