@@ -61,7 +61,7 @@ const CourseModal: React.FC<CourseModalProps> = ({ course, onClose }) => {
       <div
         className="relative rounded-[30px] p-8 w-full max-w-6xl text-white max-h-[90vh] overflow-y-auto shadow-2xl"
         style={{
-          backgroundImage: "url('/Card.png')", // 👈 your modal card background
+          backgroundImage: "url('/icons/Card.png')", // 👈 your modal card background
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

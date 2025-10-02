@@ -42,7 +42,7 @@ export default function ContactPage() {
                 className="relative rounded-2xl overflow-hidden text-white text-center max-w-4xl mx-auto"
             >
                 {/* Background image */}
-                <div className="absolute inset-0 bg-[url('/card.png')] bg-cover bg-center"></div>
+                <div className="absolute inset-0 bg-[url('/icons/card.png')] bg-cover bg-center"></div>
                 {/* Overlay for readability */}
                 <div className="absolute inset-0 bg-black/50"></div>
 
