@@ -27,10 +27,10 @@ export default function ContactPage() {
                         <p className="font-bold">Contact Information</p>
                         <p className="text-sm text-gray-600">
                             <a
-                                href="tel:+2349018212652"
+                                href="tel:+2347049258491"
                                 className="text-sm text-gray-600 hover:underline"
                             >
-                                09018212652, 0903 545 6197
+                                07049258491 , 09018212652
                             </a>
                         </p>
                     </div>
