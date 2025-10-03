@@ -7,10 +7,20 @@ interface CourseCardProps {
   reviews: number;
   description: string;
   image: string;
+  available: boolean;
   onOpen: () => void;
 }
 
-const CourseCard: React.FC<CourseCardProps> = ({ title, rating, reviews, description, image, onOpen }) => {
+const CourseCard: React.FC<CourseCardProps> = ({ 
+  title, 
+  rating, 
+  reviews, 
+  description, 
+  image, 
+  available,   // ✅ added this
+  onOpen 
+}) => {
+
   return (
     <div className="bg-white border border-gray-050 rounded-2xl shadow-sm p-8 w-full max-w-sm flex flex-col overflow-hidden hover:shadow-md transition">
       <div>
@@ -41,12 +51,15 @@ const CourseCard: React.FC<CourseCardProps> = ({ title, rating, reviews, descrip
         </p>
 
         {/* Button */}
-        <button 
-          onClick={onOpen}
-          className="mt-auto bg-[#0c0f24] text-white px-4 py-2 rounded-full w-full font-medium hover:bg-[#1a1f3d] transition"
-        >
-          Explore Course
-        </button>
+      <button
+        onClick={available ? onOpen : undefined}
+        className={`mt-auto px-4 py-2 rounded-full w-full font-medium transition
+          ${available ? 'bg-[#0c0f24] text-white hover:bg-[#1a1f3d]' : 'bg-gray-300 text-gray-600 cursor-not-allowed'}`}
+      >
+        {available ? 'Explore Course' : 'Currently Not Available'}
+      </button>
+
+
       </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ const courses = [
     reviews: 132,
     description: "Learn to craft seamless digital experiences by mastering user research, wireframing, prototyping, and design tools used by top designers.",
     image: "/uiux.png",
+        available: true,
     plans: [
       { name: "SIWES", price: 25000 },
       { name: "IT", price: 59999 },
@@ -22,6 +23,7 @@ const courses = [
     reviews: 110,
     description: "Build responsive, interactive websites with HTML, CSS, JavaScript, and modern frameworks like React — the core of user-facing applications.",
     image: "/front.png",
+        available: true,
     plans: [
       { name: "SIWES", price: 45999 },  
       { name: "IT", price: 89999 },
@@ -34,6 +36,7 @@ const courses = [
     reviews: 98,
     description: "Master the art of writing for film and TV. Learn story structure, dialogue, character arcs, and how to pitch compelling scripts.",
     image: "/screen.png",
+        available: true,
     plans: [
       { name: "SIWES", price: 19999 },  
       { name: "IT", price: 39999 },
@@ -46,6 +49,7 @@ const courses = [
     reviews: 89,
     description: "Master the layout and design of professional documents, brochures, and publications using tools like CorelDRAW, InDesign, and Publisher.",
     image: "/laptop.png",
+        available: true,
     plans: [
       { name: "SIWES", price: 30000 },  
       { name: "IT", price: 74999 },
@@ -58,6 +62,7 @@ const courses = [
     reviews: 122,
     description: "Learn to organize and manage data using tools like Microsoft access and SQL for real-world applications.",
     image: "/sql.png",
+        available: true,
     plans: [
       { name: "SIWES", price: 21999 },
       { name: "IT", price: 54999 },
@@ -70,10 +75,11 @@ const courses = [
     reviews: 76,
     description: "Explore the power of AI-driven tools like ChatGPT, DALL·E, and others to automate tasks, boost creativity, and streamline workflows.",
     image: "/ai.png",
+        available: false,
     plans: [
-      { name: "SIWES", price: 19999 },
-      { name: "IT", price: 44999 },
-      { name: "REGULAR", price: 114999 },
+      { name: "SIWES", price: 1000 },
+      { name: "IT", price: 4000 },
+      { name: "REGULAR", price: 1500 },
     ],
   },
   {
@@ -82,6 +88,7 @@ const courses = [
     reviews: 64,
     description: "Gain practical skills to support businesses remotely — from email management and scheduling to customer support and research tasks.",
     image: "/laptop2.png",
+        available: false,
     plans: [
       { name: "SIWES", price: 19999 },
       { name: "IT", price: 45999 },
@@ -94,6 +101,7 @@ const courses = [
     reviews: 104,
     description: "Learn to create stunning visuals using tools like Adobe Photoshop, Illustrator, and Canva — from branding to digital content design.",
     image: "/square.png",
+        available: false,
     plans: [
       { name: "SIWES", price: 19999 },
       { name: "IT", price: 49999 },
