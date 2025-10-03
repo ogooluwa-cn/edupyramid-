@@ -64,7 +64,7 @@ const courses = [
     image: "/sql.png",
         available: true,
     plans: [
-      { name: "SIWES", price: 21999 },
+      { name: "SIWES", price: 1000 },
       { name: "IT", price: 54999 },
       { name: "REGULAR", price: 149999 },
     ],
