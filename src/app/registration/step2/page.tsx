@@ -20,7 +20,6 @@ const programmeOptions = ['IT', 'SIWES', 'Regular'];
 
 export default function RegisterStep2Form() {
   const [email, setEmail] = useState('');
-  const [otpCode, setOtpCode] = useState('');
   const [course, setCourse] = useState('');
   const [programme, setProgramme] = useState('');
 
@@ -42,7 +41,6 @@ export default function RegisterStep2Form() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             email,
-            otpCode,
             course,
             programme,
           }),
@@ -68,7 +66,7 @@ export default function RegisterStep2Form() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !otpCode || !course || !programme) {
+    if (!email || !course || !programme) {
       alert('Please fill in all fields');
       return;
     }
@@ -182,17 +180,7 @@ export default function RegisterStep2Form() {
             </select>
           </div>
 
-          {/* OTP */}
-          <div className="mb-6">
-            <label className="block mb-1 font-medium">OTP Code</label>
-            <input
-              type="text"
-              value={otpCode}
-              onChange={(e) => setOtpCode(e.target.value)}
-              placeholder="Enter OTP code"
-              className="w-full p-2 border border-gray-300 rounded-full text-sm bg-gray-100"
-            />
-          </div>
+
 
           {/* Submit */}
           <button
