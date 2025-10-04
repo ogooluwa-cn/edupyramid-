@@ -112,6 +112,20 @@ export default function Login() {
           >
             {loading ? 'Submitting...' : 'Proceed'}
           </button>
+              <div className="flex flex-col sm:flex-row justify-between items-center mt-6 text-xs text-gray-500 gap-2">
+        <p>
+          Don't have an account yet ?{' '}
+          <a
+            href="/registration/login"
+            className="text-green-600 hover:underline"
+          >
+            sign in
+          </a>
+        </p>
+        <a href="#" className="hover:underline">
+          Privacy and Policy
+        </a>
+      </div>
         </form>
       </div>
     </div>

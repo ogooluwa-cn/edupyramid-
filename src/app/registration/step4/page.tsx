@@ -217,20 +217,7 @@ export default function RegisterStep4() {
           >
             {mutation.isPending ? 'Submitting...' : 'Submit'}
           </button>
-            <div className="flex flex-col sm:flex-row justify-between items-center mt-6 text-xs text-gray-500 gap-2">
-        <p>
-          don't have an account yet?{' '}
-          <a
-            href="/registration/decision"
-            className="text-green-600 hover:underline"
-          >
-            sign in
-          </a>
-        </p>
-        <a href="#" className="hover:underline">
-          Privacy and Policy
-        </a>
-      </div>
+    
         </form>
       </div>
     </div>
