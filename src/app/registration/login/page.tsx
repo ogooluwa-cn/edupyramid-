@@ -116,7 +116,7 @@ export default function Login() {
         <p>
           Don't have an account yet ?{' '}
           <a
-            href="/registration/login"
+            href="/registration/decision"
             className="text-green-600 hover:underline"
           >
             sign in
