@@ -89,7 +89,7 @@ export default function RegisterStep4() {
         />
         <div className="absolute bottom-6 left-6">
           <button
-            onClick={() => router.push('/')}
+            onClick={() => router.push('/#hero')}
             className="bg-black text-white text-xs py-2 px-4 rounded-full"
           >
             Go back to website

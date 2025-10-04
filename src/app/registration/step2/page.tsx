@@ -84,7 +84,7 @@ export default function RegisterStep2Form() {
           className="object-cover rounded-b-[2rem] lg:rounded-r-[2rem] lg:rounded-b-none"
         />
         <div className="absolute bottom-6 left-6">
-          <button className="bg-black text-white text-xs py-2 px-4 rounded-full">
+          <button className="bg-black text-white text-xs py-2 px-4 rounded-full" onClick={() => window.location.href = '/#hero'}>
             Go back to website
           </button>
         </div>
@@ -104,6 +104,9 @@ export default function RegisterStep2Form() {
             height={40} 
             className="mb-6 mx-auto"
           />
+
+        
+
 
           <p className="text-center text-base font-medium text-gray-700 mb-1">
             Programme & Course Selection

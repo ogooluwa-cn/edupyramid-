@@ -25,7 +25,7 @@ export default function PaymentPage() {
     setAmount(Number(storedPrice));
 
     if (!storedEmail) {
-      router.push('/registration/login');
+      router.push('/registration/decision');
       return;
     }
 
@@ -51,7 +51,7 @@ export default function PaymentPage() {
 
       if (res.ok) {
         alert('Payment successful!');
-        router.push('/dashboard'); // redirect after payment
+        router.push('/#hero'); // redirect after payment
       } else {
         alert('⚠️ Payment verification failed.');
       }
