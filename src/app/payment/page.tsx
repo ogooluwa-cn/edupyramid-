@@ -51,7 +51,8 @@ export default function PaymentPage() {
 
       if (res.ok) {
         alert('Payment successful!');
-        router.push('/#hero'); // redirect after payment
+        window.location.href = 'https://edupyramidspace.com/lms';
+
       } else {
         alert('⚠️ Payment verification failed.');
       }

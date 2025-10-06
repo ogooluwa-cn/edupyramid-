@@ -68,7 +68,7 @@ export default function DesktopNavbar({ onNavClick }: Props) {
         <motion.button
           whileTap={{ scale: 0.9 }}
           transition={{ type: 'spring', stiffness: 300 }}
-          onClick={() => router.push('/registration/login')}
+            onClick={() => window.location.href = 'https://edupyramidspace.com/lms'} 
           className="w-36 h-12 rounded-full border-2 border-blueColor2 text-black"
         >
           Log in
