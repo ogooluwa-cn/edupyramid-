@@ -104,33 +104,36 @@ export default function ContactPage() {
                 </div>
             </section>
 
-            {/* Take the next step */}
-            <section className="relative rounded-2xl overflow-hidden text-white text-center max-w-4xl mx-auto">
-                {/* Gradient background */}
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        background: 'radial-gradient(ellipse at 80% 20%, #0f3c2d 0%, #000 70%)',
-                    }}
-                ></div>
+{/* Take the next step */}
+<section className="relative rounded-2xl overflow-hidden text-white text-center max-w-4xl mx-auto my-16">
+  {/* Gradient background */}
+  <div
+    className="absolute inset-0"
+    style={{
+      background: 'radial-gradient(ellipse at 80% 20%, #0f3c2d 0%, #000 70%)',
+    }}
+  ></div>
 
-                {/* Overlay for readability */}
-                <div className="absolute inset-0 bg-black/50"></div>
+  {/* Overlay for readability */}
+  <div className="absolute inset-0 bg-black/50"></div>
 
-                {/* Content */}
-                <div className="relative p-24">
-                    <h3 className="text-3xl font-bold mb-4">TAKE THE NEXT STEP!</h3>
-                    <p className="mb-6 text-gray-200">
-                        Let&apos;s transform the digital landscape together.
-                    </p>
-                    <Link
-                        href="/registration"
-                        className="bg-white text-black py-3 px-6 rounded-full font-medium hover:bg-gray-100 transition"
-                    >
-                        Let’s Get Started →
-                    </Link>
-                </div>
-            </section>
+  {/* Content */}
+  <div className="relative px-6 py-16 sm:px-10 md:px-20 lg:px-24 flex flex-col items-center justify-center">
+    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+      TAKE THE NEXT STEP!
+    </h3>
+    <p className="mb-6 text-gray-200 text-sm sm:text-base md:text-lg max-w-lg">
+      Let&apos;s transform the digital landscape together.
+    </p>
+    <Link
+      href="/registration"
+      className="bg-white text-black py-3 px-8 rounded-full font-medium hover:bg-gray-100 transition text-sm sm:text-base"
+    >
+      Let’s Get Started →
+    </Link>
+  </div>
+</section>
+
         </div>
     );
 }

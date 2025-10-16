@@ -82,9 +82,11 @@ export default function Home() {
               alt="Student"
               className="w-full h-auto max-h-[500px] object-contain"
             />
+            <a href="#programmes" onClick={() => handleNavClick('programmes')}>
             <button className="absolute top-[85%] left-8 w-[240px] h-16 rounded-full border-2 border-blueColor3 text-blueColor3 hidden lg:flex items-center justify-center gap-2"
-                 onClick={() => router.push('/courses')}
-                 >
+             
+            > 
+                 
               Explore courses
               <img
                 src="/icons/arrow-up-dark.png"
@@ -92,6 +94,7 @@ export default function Home() {
                 className="w-12 h-12"
               />
             </button>
+            </a>
           </div>
         </div>
       </div>

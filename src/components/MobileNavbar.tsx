@@ -103,7 +103,7 @@ export default function MobileNavbar({ onNavClick }: Props) {
               className="w-full rounded-full bg-black text-white py-3 flex items-center justify-center gap-2"
               onClick={() => {
                 setIsOpen(false);
-                router.push('/registration');
+                router.push('/registration/decision'); // ✅ redirect to decision page
               }}
             >
               Let’s Get Started

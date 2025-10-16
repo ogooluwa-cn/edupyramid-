@@ -78,7 +78,7 @@ export default function DesktopNavbar({ onNavClick }: Props) {
           whileTap={{ scale: 0.9 }}
           transition={{ type: 'spring', stiffness: 300 }}
           className="w-48 h-12 rounded-full bg-blueColor3 border-2 border-blueColor2 text-white flex items-center justify-center gap-2"
-          onClick={() => router.push('/registration')}
+          onClick={() => router.push('/registration/decision')}
         >
           Let’s Get Started
           <FaArrowRight />
